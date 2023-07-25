@@ -8,7 +8,7 @@ def load_saldo_and_magazyn(file):
         our_data = json.loads(opened_file.read())
         saldo = our_data.get("saldo")
         magazyn = our_data.get("magazyn")
-        return saldo, magazyn
+        return int(saldo), magazyn
 
 def save_saldo_and_magazyn_to_file(file, saldo, magazyn):
     with open(file, mode="w") as opened_file:

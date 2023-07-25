@@ -1,6 +1,15 @@
-Wykonano instrukcjê saldo zasilono 200.0 
-Zakupiono rower w iloœci 20 
-Wykonano instrukcjê saldo zasilono 300.0 
-Zakupiono rower w iloœci 5 
-Wykonano instrukcjê saldo zasilono 1000.0 
+Wykonano instrukcjï¿½ saldo zasilono 200.0 
+Zakupiono rower w iloï¿½ci 20 
+Wykonano instrukcjï¿½ saldo zasilono 300.0 
+Zakupiono rower w iloï¿½ci 5 
+Wykonano instrukcjï¿½ saldo zasilono 1000.0 
 Wykonano instrukcje saldo zmniejszono 500.0 
+Zakupiono rower w iloï¿½ci 1 
+Dodano hulajnoga w iloï¿½ci 2 do magazynuDodano hulajnoga w iloï¿½ci 2 do magazynu
+Usuniêto rower z magazynuSprzedano rower w iloœci 1 
+Sprzedano ³ódka w iloœci 1 
+Sprzedano hulajnoga w iloœci 2 
+Sprzedano hulajnoga w iloœci 1 
+Usuniêto hulajnoga z magazynu, 
+Dodano rower w iloœci 5 do magazynu, 
+Dodano hulajnoga w iloœci 2 do magazynu, 

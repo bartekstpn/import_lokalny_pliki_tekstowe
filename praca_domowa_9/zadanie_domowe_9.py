@@ -36,29 +36,43 @@ while not end_program:
         except:
             print("Wystąpił błąd, musisz wpisać kwotę!")
     if operation == WyborKomendy.SPRZEDAZ.value:
-        print(magazyn)
-        product = input("Podaj nazwę produktu: ")
-        amount = int(input("Podaj ilość, którą chcesz sprzedać: "))
-        product_found = False
-        for item, item_details in magazyn.items():
-            if product == item:
-                item_details["ilość"] -= amount
-                saldo += (item_details["cena"] * amount)
-                product_found = True
+        try:
+            print(magazyn)
+            product = input("Podaj nazwę produktu: ")
+            amount = int(input("Podaj ilość, którą chcesz sprzedać: "))
+            if amount <= magazyn[product]["ilość"]:
+                magazyn[product]["ilość"] -= amount
+                saldo += (magazyn[product]["cena"] * amount)
                 history.append(f"Sprzedano {product} w ilości {amount} \n")
-                break
-        if not product_found:
-            history.append(f"Nie udało się sprzedać towaru {product}, mamy go za mało na magazynie \n")
+                if magazyn[product]["ilość"] == 0:
+                    del magazyn[product]
+                    print(f"Usunięto {product} z magazynu")
+                    history.append(f"Usunięto {product} z magazynu, \n")
+            else:
+                print("Zbyt mała ilość w magazynie!")
+                history.append(f"Nie udało się sprzedać towaru {product}, mamy go za mało na magazynie \n")
+                pass
+        except:
+            print("Wystąpił błąd")
     if operation == WyborKomendy.ZAKUP.value:
         print(magazyn)
         product = input("Podaj nazwe produktu: ")
         amount = int(input("Podaj ilość: "))
-        for item, item_details in magazyn.items():
-            if product == item:
-                item_details["ilość"] += amount
-                saldo -= (item_details["cena"] * amount)
-                history.append(f"Zakupiono {product} w ilości {amount}, \n")
-                break
+        if not product in magazyn.keys():
+            value = int(input("Podaj cene produktu: "))
+            magazyn[product] = {"ilość": amount,
+            "cena": value}
+            saldo2 = (magazyn[product]["cena"]) * amount
+            saldo -= int(saldo2)
+            history.append(f"Dodano {product} w ilości {amount} do magazynu, \n")
+            print(magazyn)
+            pass
+        elif product in magazyn.keys():
+            magazyn[product]["ilość"] += amount
+            saldo2 = (magazyn[product]["cena"]) * amount
+            saldo -= int(saldo2)
+            history.append(f"Zakupiono {product} w ilości {amount}, \n")
+
     if operation == WyborKomendy.KONTO.value:
         print(saldo)
     if operation == WyborKomendy.LISTA.value:
