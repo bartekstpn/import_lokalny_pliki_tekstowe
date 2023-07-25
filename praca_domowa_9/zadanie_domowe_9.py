@@ -32,7 +32,7 @@ while not end_program:
             elif changes == "-":
                 amount = float(input("Podaj kwotę, którą chcesz odjąć"))
                 saldo -= amount
-                history.append(f"Wykonano infstrukcje saldo zmniejszono {amount} \n")
+                history.append(f"Wykonano instrukcje saldo zmniejszono {amount} \n")
         except:
             print("Wystąpił błąd, musisz wpisać kwotę!")
     if operation == WyborKomendy.SPRZEDAZ.value:
@@ -52,30 +52,42 @@ while not end_program:
     if operation == WyborKomendy.ZAKUP.value:
         print(magazyn)
         product = input("Podaj nazwe produktu: ")
-        amount = input("Podaj ilość: ")
+        amount = int(input("Podaj ilość: "))
         for item, item_details in magazyn.items():
             if product == item:
                 item_details["ilość"] += amount
                 saldo -= (item_details["cena"] * amount)
-                history.append(f"Zakupiono {product} w ilości {amount} \n")
+                history.append(f"Zakupiono {product} w ilości {amount}, \n")
                 break
     if operation == WyborKomendy.KONTO.value:
         print(saldo)
     if operation == WyborKomendy.LISTA.value:
         print(magazyn)
     if operation == WyborKomendy.MAGAZYN.value:
-        choice = input(f"Podaj produkt: ")
-        if choice == "rower":
-            print(magazyn.get("rower"))
-        elif choice == "łódka":
-            print(magazyn.get("łódka"))
+        print(list(magazyn.keys()))
     if operation == WyborKomendy.PRZEGLAD.value:
         value_from = input("Podaj początkowy zakres")
         value_to = input("Podaj końcowy zakres")
-        if not value_to and not value_from:
-            print(history)
-        if value_from and not value_to:
-            print(history[value_from:])
+        history2 = open("history.txt", mode="r+")
+        if history2.readable():
+            try:
+                if value_from and not value_to:
+                    value_from = int(value_from)
+                    value_to = int()
+                    print(history2.readlines()[value_from:value_to])
+                elif not value_from and value_to:
+                    value_from = int(0)
+                    value_to = int(value_to)
+                    print(history2.readlines()[value_from:value_to + 1])
+                elif value_from and value_to:
+                    od = int(value_from)
+                    do = int(value_to)
+                    print(history2.readlines()[od:do + 1])
+                else:
+                    print(history2.readlines())
+            except ValueError:
+                print("Podana wartość jest błędna")
+
 
     if operation == WyborKomendy.KONIEC.value:
         end_program = True

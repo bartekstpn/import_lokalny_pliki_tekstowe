@@ -1,1 +1,6 @@
 Wykonano instrukcjê saldo zasilono 200.0 
+Zakupiono rower w iloœci 20 
+Wykonano instrukcjê saldo zasilono 300.0 
+Zakupiono rower w iloœci 5 
+Wykonano instrukcjê saldo zasilono 1000.0 
+Wykonano instrukcje saldo zmniejszono 500.0 
